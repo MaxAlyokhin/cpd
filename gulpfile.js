@@ -42,7 +42,6 @@ const path = {
         js:    'dist/scripts/',
         img:   'dist/img/',
         fonts: 'dist/fonts/',
-        libs:  'dist/libs/'
     },
     clean: 'dist'
 };

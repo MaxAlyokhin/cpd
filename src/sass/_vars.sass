@@ -2,9 +2,11 @@
 $main-font: 'lucida console'
 
 // Size
-$desktop-width            : 1280px
-$table-width              : 768px
-$mobile-width             : 767px
+$desktop-width            : 1280px // Выше этой отметки контент можно располагать в две колонки, тексты 1000px
+$sm-desktop-width         : 1279px // Ниже этой отметки контент в одну колонку, всё в 1000px шириной
+$mobile-width             : 1000px // Ниже этой отметки header превращаем в гамбургер, а контент 100% ширины
+$default-width            : 1000px
+
 $default-padding          : 25px
 
 // Color
@@ -13,3 +15,6 @@ $grey-color              : #efefef
 
 $dark-font-color         : #3a3a3a
 $light-font-color        : #efefef
+
+// Transitions
+$transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1)
