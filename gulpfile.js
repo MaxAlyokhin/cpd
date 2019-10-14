@@ -19,7 +19,7 @@ const { src, dest, watch, series, parallel } = require('gulp'),
 const path = {
     //Брать исходники здесь:
     src: { 
-        html:  'src/*.html',
+        html:  'src/html/*.html',
         sass:  'src/sass/**/*.sass',
         js:    'src/js/**/*.js', 
         img:   'src/images/**/*.*',
@@ -28,7 +28,7 @@ const path = {
     },
     //За изменением каких файлов мы хотим наблюдать:
     watch: { 
-        html:  'src/**/*.html',
+        html:  'src/html/**/*.html',
         sass:  'src/sass/**/*.sass',
         js:    'src/js/**/*.js',
         img:   'src/images/**/*.*',
@@ -134,13 +134,16 @@ exports.sass = style;
 //Собрать js
 exports.js = js;
 
+//Собрать html
+exports.html = html;
+
 //Собрать проект
 exports.build = series(clean, html, style, js, image, fonts);
 
 //Запуск сервера
 exports.dev = function() {
     browserSync(config)
-    watch(path.src.html, html)
+    watch(path.watch.html, html)
     watch(path.src.sass, style)
     watch(path.src.js, js)
     watch(path.src.img, image)
@@ -150,7 +153,7 @@ exports.dev = function() {
 //По дефолту всё собираем и запускаем сервер
 exports.default = parallel(html, style, js, image, fonts, function() {
     browserSync(config)
-    watch(path.src.html, html)
+    watch(path.watch.html, html)
     watch(path.src.sass, style)
     watch(path.src.js, js)
     watch(path.src.img, image)
