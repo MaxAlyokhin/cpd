@@ -24,6 +24,3 @@ node_modules/
 
 #Исключаем скомпилированный код
 dist/
-
-#Исключаем package.json
-package.json
