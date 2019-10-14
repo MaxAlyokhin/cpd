@@ -1,0 +1,76 @@
+.header
+  position: fixed
+  width: 100%
+  height: 65px
+  padding-top: 0px
+  z-index: 2
+  background-color: $blue-color
+  color: $light-font-color
+  @media screen and ( max-width: $mobile-width )
+    height: 50px
+  nav.desktop 
+    @include default-width
+    height: inherit
+    @media screen and ( max-width: $mobile-width )
+      display: none
+    ul
+      display: flex
+      justify-content: space-between
+      align-items: center
+      height: inherit
+      li .logo
+        img 
+          max-height: 25px
+      li a
+        color: $light-font-color
+  nav.mobile  
+    display: none
+    @media screen and ( max-width: $mobile-width )
+      display: block 
+      height: inherit
+      ul li a
+        color: $light-font-color
+      .logo 
+        height: inherit
+        display: flex
+        align-items: center
+        justify-content: center
+        img 
+          max-height: 25px
+
+.menu 
+  display: none
+  opacity: 0
+  height: 100%
+  width: 100vw
+  top: 0
+  position: fixed
+  background-color: $blue-color
+  z-index: -1
+  ul
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-end
+    padding-right: $default-padding
+    height: inherit
+    width: inherit
+    font-size: 40px
+    line-height: 70px
+        
+.active
+  display: block
+
+.visible
+  opacity: 1
+
+.overflow-hidden
+  overflow: hidden
+
+.index, .methods, .contacts
+  transform: translateY(15px)
+  opacity: 0
+
+.translate
+  transform: translateY(0px)
+  opacity: 1

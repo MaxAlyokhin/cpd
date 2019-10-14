@@ -7,7 +7,8 @@ $( document ).ready(function(){
     $(this).toggleClass('hamburger_active'); // Запускаем анимацию гамбургера
     $('body').toggleClass('overflow-hidden'); // Скрываем скролл
     if (click) {
-      $('.menu').toggleClass('active visible');
+      $('.menu').toggleClass('active');
+      setTimeout(function () { $('.menu').toggleClass('visible')}, 100);
       // По-очереди показываем пункты меню
       setTimeout(function () { $('.index').toggleClass('translate'); }, 100);
       setTimeout(function () { $('.methods').toggleClass('translate'); }, 200);
@@ -18,7 +19,7 @@ $( document ).ready(function(){
       setTimeout(function () { $('.index').toggleClass('translate'); }, 300);
       setTimeout(function () { $('.methods').toggleClass('translate'); }, 200);
       setTimeout(function () { $('.contacts').toggleClass('translate'); }, 100);
-      setTimeout(function () { $('.menu').toggleClass('visible')}, 500);
+      setTimeout(function () { $('.menu').toggleClass('visible')}, 300);
       setTimeout(function () { $('.menu').toggleClass('active')}, 1500); 
       click = 1;	
     }
