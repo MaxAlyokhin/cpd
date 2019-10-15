@@ -25,24 +25,40 @@ body
       padding-top: 50px
     section
       padding: $default-padding
+      min-height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
       .container-default
         @include default-width
         text-indent: 40px
       .container-full
-        max-width: 100%
+        width: 100%
         display: flex
         justify-content: space-around
         align-items: center
+        @media screen and ( max-width: $mobile-width )
+          flex-wrap: wrap
 
+table
+  width: 94vw
 tr 
   line-height: 25px
+
+td
+  text-align: center
 
 #red
   color: red
 
 #img
   text-indent: 0px
+  text-align: center
+  flex-shrink: 0
+  @media screen and ( max-width: $mobile-width )
+    flex-shrink: 1
 
 .section_methods
   @media screen and ( max-width: $mobile-width )
     font-size: 11px
+
