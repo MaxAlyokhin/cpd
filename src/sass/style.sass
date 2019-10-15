@@ -41,15 +41,6 @@ body
         @media screen and ( max-width: $mobile-width )
           flex-wrap: wrap
 
-table
-  width: 94vw
-  // display: none
-tr 
-  line-height: 25px
-
-td
-  text-align: center
-
 #red
   color: red
 
@@ -68,6 +59,8 @@ td
   display: table
   border-collapse: collapse
   width: 94vw
+  @media screen and ( max-width: $mobile-width )
+    width: 100%
 
 .row
   display: table-row 
@@ -78,3 +71,11 @@ td
   border: 1px solid
   text-align: center
   vertical-align: middle
+  @media screen and ( max-width: $mobile-width )
+    font-size: 5px
+
+.center
+  display: flex
+  align-items: center
+  flex-direction: column
+  text-indent: 0
