@@ -21,6 +21,7 @@ body
     position: relative
     height: inherit
     padding-top: 65px
+    text-align: justify
     @media screen and ( max-width: $mobile-width )
       padding-top: 50px
     section
@@ -42,6 +43,7 @@ body
 
 table
   width: 94vw
+  // display: none
 tr 
   line-height: 25px
 
@@ -51,7 +53,7 @@ td
 #red
   color: red
 
-#img
+.img
   text-indent: 0px
   text-align: center
   flex-shrink: 0
@@ -62,3 +64,17 @@ td
   @media screen and ( max-width: $mobile-width )
     font-size: 11px
 
+.table
+  display: table
+  border-collapse: collapse
+  width: 94vw
+
+.row
+  display: table-row 
+  line-height: 25px  
+
+.col
+  display: table-cell
+  border: 1px solid
+  text-align: center
+  vertical-align: middle
