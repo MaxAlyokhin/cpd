@@ -1,6 +1,6 @@
 # CPD
 
-## Website for computer psychological diagnostics software
+## Website for psychological software
  
 Instruments: HTML5, CSS3, Flexbox, Sass, JS (jQuery), wow.js, animate.css, Gulp, VS Code, npm
  
