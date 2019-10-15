@@ -19,21 +19,23 @@ const { src, dest, watch, series, parallel } = require('gulp'),
 const path = {
     //Брать исходники здесь:
     src: { 
-        html:  'src/html/*.html',
-        sass:  'src/sass/**/*.sass',
-        js:    'src/js/**/*.js', 
-        img:   'src/images/**/*.*',
-        fonts: 'src/fonts/**/*.*',
-        libs:  'src/libs/**/*.js',
+        html:       'src/html/*.html',
+        sass:       'src/sass/**/*.sass',
+        js:         'src/js/**/*.js', 
+        img:        'src/images/**/*.*',
+        fonts:      'src/fonts/**/*.*',
+        libs_js:    'src/libs/**/*.js',
+        libs_sass:  'src/libs/**/*.sass'
     },
     //За изменением каких файлов мы хотим наблюдать:
     watch: { 
-        html:  'src/html/**/*.html',
-        sass:  'src/sass/**/*.sass',
-        js:    'src/js/**/*.js',
-        img:   'src/images/**/*.*',
-        fonts: 'src/fonts/**/*.*',
-        libs:  'src/libs/**/*.js'
+        html:       'src/html/**/*.html',
+        sass:       'src/sass/**/*.sass',
+        js:         'src/js/**/*.js',
+        img:        'src/images/**/*.*',
+        fonts:      'src/fonts/**/*.*',
+        libs_js:    'src/libs/**/*.js',
+        libs_sass:  'src/libs/**/*.sass'
     },
     //Готовые после сборки файлы переносим сюда:
     dist: { 
@@ -42,6 +44,7 @@ const path = {
         js:    'dist/scripts/',
         img:   'dist/img/',
         fonts: 'dist/fonts/',
+        libs:  'src/libs/',
     },
     clean: 'dist'
 };
@@ -68,7 +71,7 @@ function html() {
 
 //Сборка css
 function style() {
-    return src(path.src.sass) //Путь до исходных файлов в src
+    return src([path.src.sass, path.src.libs_sass]) //Путь до исходных файлов в src
         .pipe(sourcemaps.init()) //Инициализируем sourcemaps
         .pipe(sass({ //Параметры gulp-sass
             sourceMap: false, //sourcemaps выключены
@@ -86,13 +89,13 @@ function style() {
 
 //Сборка js
 function js() {
-    return src([path.src.js, path.src.libs]) //Путь до исходных файлов в src
+    return src([path.src.js, path.src.libs_js]) //Путь до исходных файлов в src
         // .pipe(sourcemaps.init()) //Инициализируем sourcemaps
         .pipe(babel({ // Запускаем Babel
 			    presets: ['@babel/preset-env']
 		    }))
         .pipe(order([ // Порядок сборки (сначала jq)
-            path.src.libs,
+            path.src.libs_js,
             path.src.js
         ]))
         .pipe(concat('main.min.js'))
@@ -144,7 +147,9 @@ exports.dev = function() {
     browserSync(config)
     watch(path.watch.html, html)
     watch(path.src.sass, style)
+    watch(path.src.libs_sass, style)
     watch(path.src.js, js)
+    watch(path.src.libs_js, js)
     watch(path.src.img, image)
     watch(path.src.fonts, fonts)
 }
@@ -154,7 +159,9 @@ exports.default = parallel(html, style, js, image, fonts, function() {
     browserSync(config)
     watch(path.watch.html, html)
     watch(path.src.sass, style)
+    watch(path.src.libs_sass, style)
     watch(path.src.js, js)
+    watch(path.src.libs_js, js)
     watch(path.src.img, image)
     watch(path.src.fonts, fonts)
 })

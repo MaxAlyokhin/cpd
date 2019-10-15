@@ -40,6 +40,7 @@ body
         align-items: center
         @media screen and ( max-width: $mobile-width )
           flex-wrap: wrap
+          flex-direction: column
 
 #red
   color: red
@@ -90,3 +91,12 @@ h2
 
 h3
   font-size: 12pt
+
+.section-blue
+  background-color: $blue-color
+  color: $light-font-color
+
+.text-container
+  padding-right: 25px
+  @media screen and ( max-width: $mobile-width )
+    padding-right: 0
