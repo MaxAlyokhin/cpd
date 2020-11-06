@@ -54,7 +54,7 @@ const config = {
     server: {
         baseDir: "dist"
     },
-    tunnel: true,
+    tunnel: false,
     host: 'localhost',
     port: 8000,
     logPrefix: "DevServer",
@@ -94,7 +94,7 @@ function js() {
         .pipe(babel({ // Запускаем Babel
 			    presets: ['@babel/preset-env']
 		    }))
-        .pipe(order([ // Порядок сборки (сначала jq)
+        .pipe(order([ 
             path.src.libs_js,
             path.src.js
         ]))
